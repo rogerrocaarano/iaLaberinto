@@ -1,9 +1,11 @@
+package Laberinto;
+
 import java.util.LinkedList;
 
 /**
  * Interfaz para resolver laberintos.
  */
-public interface ILaberintoSolver {
+public interface ISolver {
     /**
      * Resuelve el laberinto desde una posición inicial a una posición final.
      *
@@ -32,16 +34,11 @@ public interface ILaberintoSolver {
     LinkedList<Laberinto> getSoluciones(int pasos);
 
     /**
-     * Obtiene los movimientos posibles en el laberinto.
-     *
-     * @return Matriz de movimientos.
-     */
-    int[][] getMovimientos();
-
-    /**
      * Verifica si se cumplen las condiciones adicionales para una solución.
      *
      * @return true si se cumplen las condiciones adicionales, false en caso contrario.
      */
     boolean condicionesAdicionalesSolucion(Laberinto laberinto);
+
+    void printSoluciones();
 }

@@ -1,22 +1,24 @@
+package Laberinto;
+
 /**
- * La clase `Laberinto` representa un laberinto con dimensiones y pasos utilizados para resolverlo.
+ * La clase `Laberinto.Laberinto` representa un laberinto con dimensiones y pasos utilizados para resolverlo.
  */
-public class Laberinto {
-    private int dimX; // Dimensión en el eje X del laberinto
-    private int dimY; // Dimensión en el eje Y del laberinto
-    public int[][] m; // Matriz que representa el laberinto
-    private int pasos; // Número de pasos en el laberinto
+public class Laberinto implements Cloneable {
+    private final int nroFilas;
+    private final int nroColumnas;
+    private int[][] matriz;
+    private int pasos;
 
     /**
-     * Constructor de la clase `Laberinto`.
+     * Constructor de la clase `Laberinto.Laberinto`.
      *
-     * @param dimX Dimensión en el eje X del laberinto
-     * @param dimY Dimensión en el eje Y del laberinto
+     * @param nroFilas    Dimensión en el eje X del laberinto
+     * @param nroColumnas Dimensión en el eje Y del laberinto
      */
-    public Laberinto(int dimX, int dimY) {
-        this.dimX = dimX;
-        this.dimY = dimY;
-        m = new int[dimX][dimY];
+    public Laberinto(int nroFilas, int nroColumnas) {
+        this.nroFilas = nroFilas;
+        this.nroColumnas = nroColumnas;
+        matriz = new int[nroFilas][nroColumnas];
     }
 
     /**
@@ -27,9 +29,9 @@ public class Laberinto {
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
-        for (int i = 0; i < dimX; i++) {
-            for (int j = 0; j < dimY; j++) {
-                s.append(m[i][j]).append("\t");
+        for (int i = 0; i < nroFilas; i++) {
+            for (int j = 0; j < nroColumnas; j++) {
+                s.append(matriz[i][j]).append("\t");
             }
             s.append("\n");
         }
@@ -43,12 +45,17 @@ public class Laberinto {
      */
     @Override
     public Laberinto clone() {
-        Laberinto laberinto = new Laberinto(dimX, dimY);
-        for (int i = 0; i < dimX; i++) {
-            System.arraycopy(m[i], 0, laberinto.m[i], 0, dimY);
+        try {
+            Laberinto obj = (Laberinto) super.clone();
+            obj.matriz = new int[nroFilas][nroColumnas];
+            for (int i = 0; i < nroFilas; i++) {
+                System.arraycopy(matriz[i], 0, obj.matriz[i], 0, nroColumnas);
+            }
+            obj.pasos = pasos;
+            return obj;
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
         }
-        laberinto.pasos = pasos;
-        return laberinto;
     }
 
     /**
@@ -59,9 +66,9 @@ public class Laberinto {
      * @return `true` si la posición es válida, `false` en caso contrario
      */
     public boolean posValida(int i, int j) {
-        return i >= 0 && i < dimX &&
-                j >= 0 && j < dimY &&
-                m[i][j] == 0;
+        return i >= 0 && i < nroFilas &&
+                j >= 0 && j < nroColumnas &&
+                matriz[i][j] == 0;
     }
 
     /**
@@ -72,7 +79,7 @@ public class Laberinto {
      * @param paso Valor que actualiza el paso actual
      */
     public void setPaso(int i, int j, int paso) {
-        m[i][j] = paso;
+        matriz[i][j] = paso;
         pasos = paso;
     }
 
@@ -90,8 +97,8 @@ public class Laberinto {
      *
      * @return Dimensión en el eje X
      */
-    public int getDimX() {
-        return dimX;
+    public int getNroFilas() {
+        return nroFilas;
     }
 
     /**
@@ -99,8 +106,8 @@ public class Laberinto {
      *
      * @return Dimensión en el eje Y
      */
-    public int getDimY() {
-        return dimY;
+    public int getNroColumnas() {
+        return nroColumnas;
     }
 
     /**
@@ -111,6 +118,15 @@ public class Laberinto {
      * @return Valor de la posición
      */
     public int get(int i, int j) {
-        return m[i][j];
+        return matriz[i][j];
+    }
+
+    public void setObstaculo(int i, int j) {
+        matriz[i][j] = -1;
+    }
+
+
+    public void print() {
+        System.out.println(this);
     }
 }

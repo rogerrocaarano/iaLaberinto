@@ -1,9 +1,11 @@
+package Laberinto;
+
 import java.util.LinkedList;
 
-public abstract class LaberintoSolverBase implements ILaberintoSolver {
+public abstract class SolverBase implements ISolver {
     protected LinkedList<Laberinto> soluciones = new LinkedList<>();
+    protected LinkedList<ReglaMovimiento> reglas = new LinkedList<>();
 
-    @Override
     public void resolver(Laberinto laberinto, int i, int j, int iFin, int jFin, int paso) {
         if (!laberinto.posValida(i, j)) {
             return;
@@ -12,19 +14,16 @@ public abstract class LaberintoSolverBase implements ILaberintoSolver {
         if (i == iFin && j == jFin && condicionesAdicionalesSolucion(laberinto)) {
             soluciones.add(laberinto.clone());
         }
-        int[][] movimientos = getMovimientos();
-        for (int[] movimiento : movimientos) {
-            resolver(laberinto, i + movimiento[0], j + movimiento[1], iFin, jFin, paso + 1);
+        for (ReglaMovimiento r : reglas) {
+            resolver(laberinto, i + r.movimientoX(), j + r.movimientoY(), iFin, jFin, paso + 1);
         }
         laberinto.setPaso(i, j, 0);
     }
 
-    @Override
     public LinkedList<Laberinto> getSoluciones() {
         return soluciones;
     }
 
-    @Override
     public LinkedList<Laberinto> getSoluciones(int pasos) {
         LinkedList<Laberinto> solucionesFiltradas = new LinkedList<>();
         for (Laberinto laberinto : soluciones) {
@@ -35,7 +34,13 @@ public abstract class LaberintoSolverBase implements ILaberintoSolver {
         return solucionesFiltradas;
     }
 
-    @Override
+    public void printSoluciones() {
+        for (Laberinto laberinto : soluciones) {
+            laberinto.print();
+        }
+        System.out.println("Soluciones encontradas: " + soluciones.size());
+    }
+
     public boolean condicionesAdicionalesSolucion(Laberinto laberinto) {
         return true;
     }
