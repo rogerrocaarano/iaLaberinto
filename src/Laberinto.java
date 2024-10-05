@@ -4,7 +4,7 @@
 public class Laberinto {
     private int dimX; // Dimensión en el eje X del laberinto
     private int dimY; // Dimensión en el eje Y del laberinto
-    private int[][] m; // Matriz que representa el laberinto
+    public int[][] m; // Matriz que representa el laberinto
     private int pasos; // Número de pasos en el laberinto
 
     /**

@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 public class Main {
     static int contadorSoluciones = 0;
 
@@ -27,5 +29,27 @@ public class Main {
             }
             System.out.println("Numero de soluciones (" + descriptions[k] + "): " + solvers[k].getSoluciones().size());
         }
+
+        Laberinto ejemplo2 = new Laberinto(4, 4);
+        ejemplo2.m[2][0] = -1;
+        ejemplo2.m[0][2] = -1;
+
+        ILaberintoSolver solver2 = new LaberintoT1a();
+        solver2.resolver(ejemplo2, 0,0, 3,3, 1);
+        LinkedList<Laberinto> soluciones = solver2.getSoluciones();
+        for (Laberinto solucion: soluciones) {
+            System.out.println(solucion);
+        }
+
+//        Laberinto ejemplo3 = new Laberinto(4, 4);
+//        ejemplo3.m[2][0] = -1;
+//        ejemplo3.m[0][2] = -1;
+//
+//        ILaberintoSolver solver3 = new LaberintoT3a();
+//        solver3.resolver(ejemplo3, 0,0, 3,3, 1);
+//        LinkedList<Laberinto> soluciones = solver3.getSoluciones();
+//        for (Laberinto solucion: soluciones) {
+//            System.out.println(solucion);
+//        }
     }
 }
