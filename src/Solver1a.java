@@ -8,5 +8,6 @@ public class Solver1a extends SolverBase {
         super.reglas.add(new ReglaMovimiento(0, 1));
         super.reglas.add(new ReglaMovimiento(1, 0));
         super.reglas.add(new ReglaMovimiento(0, -1));
+        // comentario
     }
 }
