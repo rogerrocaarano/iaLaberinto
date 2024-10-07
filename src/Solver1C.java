@@ -1,4 +1,6 @@
-public class LaberintoT1c extends LaberintoT1b {
+import Laberinto.Laberinto;
+
+public class Solver1C extends Solver1B {
     @Override
     public boolean condicionesAdicionalesSolucion(Laberinto laberinto) {
         return !super.condicionesAdicionalesSolucion(laberinto);
