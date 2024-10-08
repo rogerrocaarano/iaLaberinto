@@ -8,6 +8,12 @@ import java.util.LinkedList;
 
 public class Main {
     public static void main(String[] args) {
+        tarea1();
+        tarea2();
+    }
+
+    public static void tarea1() {
+        // Tarea 1 - EL PROBLEMA DEL LABERINTO BÁSICO
         // Ejercicio 1
         resolverEjercicio(laberintoSinObstaculos(), reglasHorizontal());
         // Ejercicio 2
@@ -19,6 +25,16 @@ public class Main {
         resolverEjercicio(laberintoSinObstaculos(), reglasDiagonal());
         resolverEjercicio(laberintoConObstaculos(), reglasDiagonal());
         // Ejercicio 5
+        // Implementado en la clase Laberinto.
+    }
+
+    public static void tarea2() {
+        // Tarea 2 - EL PROBLEMA DEL LABERINTO CON SALTO DE CABALLO
+        // Ejercicio 1
+        resolverEjercicio(laberintoSinObstaculos(), reglasCaballo());
+        // Ejercicio 2
+        resolverEjercicio(laberintoConObstaculos(), reglasCaballo());
+        // Ejercicio 3
         // Implementado en la clase Laberinto.
     }
 
@@ -81,6 +97,19 @@ public class Main {
         reglas.add(new ReglaMovimiento(1, 1));
         reglas.add(new ReglaMovimiento(1, -1));
         reglas.add(new ReglaMovimiento(-1, -1));
+        return reglas;
+    }
+
+    public static LinkedList<ReglaMovimiento> reglasCaballo() {
+        LinkedList<ReglaMovimiento> reglas = new LinkedList<>();
+        reglas.add(new ReglaMovimiento(-2, 1));
+        reglas.add(new ReglaMovimiento(-1, 2));
+        reglas.add(new ReglaMovimiento(1, 2));
+        reglas.add(new ReglaMovimiento(2, 1));
+        reglas.add(new ReglaMovimiento(2, -1));
+        reglas.add(new ReglaMovimiento(1, -2));
+        reglas.add(new ReglaMovimiento(-1, -2));
+        reglas.add(new ReglaMovimiento(-2, -1));
         return reglas;
     }
 }
