@@ -2,6 +2,7 @@ package Tarea1;
 
 import Laberinto.Laberinto;
 import Laberinto.ISolver;
+import Tarea1.LaberintoSinDiagonal.*;
 
 public class Main {
     public static void main(String[] args) {
