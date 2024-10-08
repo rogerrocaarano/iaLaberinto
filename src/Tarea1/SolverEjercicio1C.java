@@ -1,8 +1,11 @@
+package Tarea1;
+
 import Laberinto.Laberinto;
 
-public class Solver1C extends Solver1B {
+public class SolverEjercicio1C extends SolverEjercicio1B {
     @Override
     public boolean condicionesAdicionalesSolucion(Laberinto laberinto) {
+        // Negar la condición del ejercicio anterior (todas las casillas visitadas)
         return !super.condicionesAdicionalesSolucion(laberinto);
     }
 }

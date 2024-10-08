@@ -1,6 +1,8 @@
+package Tarea1;
+
 import Laberinto.Laberinto;
 
-public class Solver1B extends Solver1a {
+public class SolverEjercicio1B extends SolverEjercicio1A {
     private boolean todasLasCasillasVisitadas(Laberinto laberinto) {
         for (int i = 0; i < laberinto.getNroFilas(); i++) {
             for (int j = 0; j < laberinto.getNroColumnas(); j++) {

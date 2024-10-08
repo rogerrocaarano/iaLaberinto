@@ -1,10 +1,13 @@
+package Tarea1;
+
 import Laberinto.Laberinto;
 
 import java.util.LinkedList;
 
-public class Solver1E extends Solver1a {
+public class SolverEjercicio1E extends SolverEjercicio1A {
     @Override
     public LinkedList<Laberinto> getSoluciones() {
+        // Algoritmo para obtener la solución de menor longitud
         if (soluciones.size() <= 1) {
             return soluciones;
         }
