@@ -1,4 +1,4 @@
-package Tarea1;
+package Tarea1.LaberintoSinDiagonal;
 
 import Laberinto.Laberinto;
 
