@@ -1,13 +1,15 @@
 package Tarea1;
 
 import Laberinto.Laberinto;
+import Laberinto.SolverBase;
 import Laberinto.ReglaMovimiento;
 
 import java.util.LinkedList;
 
-public class SolverB extends SolverA {
+public class SolverB extends SolverBase {
     public SolverB(LinkedList<ReglaMovimiento> reglas) {
-        super(reglas);
+        super();
+        super.reglas = reglas;
     }
 
     private boolean todasLasCasillasVisitadas(Laberinto laberinto) {

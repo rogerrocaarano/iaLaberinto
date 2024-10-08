@@ -1,13 +1,15 @@
 package Tarea1;
 
 import Laberinto.Laberinto;
+import Laberinto.SolverBase;
 import Laberinto.ReglaMovimiento;
 
 import java.util.LinkedList;
 
-public class SolverD extends SolverA {
+public class SolverD extends SolverBase {
     public SolverD(LinkedList<ReglaMovimiento> reglas) {
-        super(reglas);
+        super();
+        super.reglas = reglas;
     }
 
     @Override
