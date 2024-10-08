@@ -35,6 +35,7 @@ public abstract class SolverBase implements ISolver {
     }
 
     public void printSoluciones() {
+        LinkedList<Laberinto> soluciones = getSoluciones();
         for (Laberinto laberinto : soluciones) {
             laberinto.print();
         }
