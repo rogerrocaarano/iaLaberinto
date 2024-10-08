@@ -1,10 +1,15 @@
-package Tarea1.LaberintoSinDiagonal;
+package Tarea1;
 
 import Laberinto.Laberinto;
+import Laberinto.ReglaMovimiento;
 
 import java.util.LinkedList;
 
-public class SolverEjercicio1D extends SolverEjercicio1A {
+public class SolverD extends SolverA {
+    public SolverD(LinkedList<ReglaMovimiento> reglas) {
+        super(reglas);
+    }
+
     @Override
     public LinkedList<Laberinto> getSoluciones() {
         // Algoritmo para obtener la solución de mayor longitud

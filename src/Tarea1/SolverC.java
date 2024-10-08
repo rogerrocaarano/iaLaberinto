@@ -1,8 +1,15 @@
-package Tarea1.LaberintoSinDiagonal;
+package Tarea1;
 
 import Laberinto.Laberinto;
+import Laberinto.ReglaMovimiento;
 
-public class SolverEjercicio1C extends SolverEjercicio1B {
+import java.util.LinkedList;
+
+public class SolverC extends SolverB {
+    public SolverC(LinkedList<ReglaMovimiento> reglas) {
+        super(reglas);
+    }
+
     @Override
     public boolean condicionesAdicionalesSolucion(Laberinto laberinto) {
         // Negar la condición del ejercicio anterior (todas las casillas visitadas)

@@ -1,13 +1,15 @@
 package Tarea1;
 
 import Laberinto.Laberinto;
+import Laberinto.ReglaMovimiento;
 import Laberinto.ISolver;
-import Tarea1.LaberintoSinDiagonal.*;
+
+import java.util.LinkedList;
 
 public class Main {
     public static void main(String[] args) {
-        ejercicio1();
-        ejercicio2();
+        ejercicio1(reglasSinDiagonal());
+        ejercicio2(reglasSinDiagonal());
 
     }
 
@@ -27,21 +29,52 @@ public class Main {
         solver.printSoluciones();
     }
 
-    public static void ejercicio1() {
-        resolverEjercicio(laberintoSinObstaculos(), new SolverEjercicio1A());
-        resolverEjercicio(laberintoSinObstaculos(), new SolverEjercicio1B());
-        resolverEjercicio(laberintoSinObstaculos(), new SolverEjercicio1C());
-        resolverEjercicio(laberintoSinObstaculos(), new SolverEjercicio1D());
-        resolverEjercicio(laberintoSinObstaculos(), new SolverEjercicio1E());
+    public static void ejercicio1(LinkedList<ReglaMovimiento> reglas) {
+        resolverEjercicio(laberintoSinObstaculos(), new SolverA(reglas));
+        resolverEjercicio(laberintoSinObstaculos(), new SolverB(reglas));
+        resolverEjercicio(laberintoSinObstaculos(), new SolverC(reglas));
+        resolverEjercicio(laberintoSinObstaculos(), new SolverD(reglas));
+        resolverEjercicio(laberintoSinObstaculos(), new SolverE(reglas));
     }
 
-    public static void ejercicio2() {
+    public static void ejercicio2(LinkedList<ReglaMovimiento> reglas) {
         // Los Solvers son los mismos que en el ejercicio 1,
         // pero se debe pasar un laberinto con obstáculos
-        resolverEjercicio(laberintoConObstaculos(), new SolverEjercicio1A());
-        resolverEjercicio(laberintoConObstaculos(), new SolverEjercicio1B());
-        resolverEjercicio(laberintoConObstaculos(), new SolverEjercicio1C());
-        resolverEjercicio(laberintoConObstaculos(), new SolverEjercicio1D());
-        resolverEjercicio(laberintoConObstaculos(), new SolverEjercicio1E());
+        resolverEjercicio(laberintoConObstaculos(), new SolverA(reglas));
+        resolverEjercicio(laberintoConObstaculos(), new SolverB(reglas));
+        resolverEjercicio(laberintoConObstaculos(), new SolverC(reglas));
+        resolverEjercicio(laberintoConObstaculos(), new SolverD(reglas));
+        resolverEjercicio(laberintoConObstaculos(), new SolverE(reglas));
+    }
+
+    public static LinkedList<ReglaMovimiento> reglasSinDiagonal() {
+        LinkedList<ReglaMovimiento> reglas = new LinkedList<>();
+        reglas.add(new ReglaMovimiento(-1, 0));
+        reglas.add(new ReglaMovimiento(0, 1));
+        reglas.add(new ReglaMovimiento(1, 0));
+        reglas.add(new ReglaMovimiento(0, -1));
+        return reglas;
+    }
+
+    public static LinkedList<ReglaMovimiento> reglasConDiagonal() {
+        LinkedList<ReglaMovimiento> reglas = new LinkedList<>();
+        reglas.add(new ReglaMovimiento(-1, 0));
+        reglas.add(new ReglaMovimiento(-1, 1));
+        reglas.add(new ReglaMovimiento(0, 1));
+        reglas.add(new ReglaMovimiento(1, 1));
+        reglas.add(new ReglaMovimiento(1, 0));
+        reglas.add(new ReglaMovimiento(1, -1));
+        reglas.add(new ReglaMovimiento(0, -1));
+        reglas.add(new ReglaMovimiento(-1, -1));
+        return reglas;
+    }
+
+    public static LinkedList<ReglaMovimiento> reglasSoloDiagonal() {
+        LinkedList<ReglaMovimiento> reglas = new LinkedList<>();
+        reglas.add(new ReglaMovimiento(-1, 1));
+        reglas.add(new ReglaMovimiento(1, 1));
+        reglas.add(new ReglaMovimiento(1, -1));
+        reglas.add(new ReglaMovimiento(-1, -1));
+        return reglas;
     }
 }
