@@ -2,12 +2,12 @@ package Solvers;
 
 import Laberinto.Laberinto;
 import Laberinto.SolverBase;
-import Laberinto.ReglaMovimiento;
+import Laberinto.Regla;
 
 import java.util.LinkedList;
 
 public class SolverB extends SolverBase {
-    public SolverB(LinkedList<ReglaMovimiento> reglas) {
+    public SolverB(LinkedList<Regla> reglas) {
         super();
         super.reglas = reglas;
     }

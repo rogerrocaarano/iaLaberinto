@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public abstract class SolverBase implements ISolver {
     protected LinkedList<Laberinto> soluciones = new LinkedList<>();
-    protected LinkedList<ReglaMovimiento> reglas = new LinkedList<>();
+    protected LinkedList<Regla> reglas = new LinkedList<>();
 
     public void resolver(Laberinto laberinto, int i, int j, int iFin, int jFin, int paso) {
         if (!laberinto.posValida(i, j)) {
@@ -14,7 +14,8 @@ public abstract class SolverBase implements ISolver {
         if (i == iFin && j == jFin && condicionesAdicionalesSolucion(laberinto)) {
             soluciones.add(laberinto.clone());
         }
-        for (ReglaMovimiento r : reglas) {
+        LinkedList<Regla> reglasAplicables = reglasAplicables(laberinto, i, j);
+        for (Regla r : reglasAplicables) {
             resolver(laberinto, i + r.movimientoX(), j + r.movimientoY(), iFin, jFin, paso + 1);
         }
         laberinto.setPaso(i, j, 0);
@@ -44,5 +45,15 @@ public abstract class SolverBase implements ISolver {
 
     public boolean condicionesAdicionalesSolucion(Laberinto laberinto) {
         return true;
+    }
+
+    public LinkedList<Regla> reglasAplicables(Laberinto laberinto, int i, int j) {
+        LinkedList<Regla> reglasAplicables = new LinkedList<>();
+        for (Regla r : reglas) {
+           if (r.esValida(laberinto, i, j)) {
+               reglasAplicables.add(r);
+           }
+        }
+        return reglasAplicables;
     }
 }

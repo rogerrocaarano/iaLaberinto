@@ -40,5 +40,10 @@ public interface ISolver {
      */
     boolean condicionesAdicionalesSolucion(Laberinto laberinto);
 
+    /**
+     * Imprime las soluciones encontradas.
+     */
     void printSoluciones();
+
+    LinkedList<Regla> reglasAplicables(Laberinto laberinto, int i, int j);
 }
