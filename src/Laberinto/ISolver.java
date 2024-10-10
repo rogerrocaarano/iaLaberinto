@@ -45,5 +45,13 @@ public interface ISolver {
      */
     void printSoluciones();
 
+    /**
+     * Obtiene las reglas aplicables en una posición específica del laberinto.
+     *
+     * @param laberinto El laberinto en el que se aplican las reglas.
+     * @param i         Fila de la posición actual.
+     * @param j         Columna de la posición actual.
+     * @return Lista de reglas aplicables en la posición especificada.
+     */
     LinkedList<Regla> reglasAplicables(Laberinto laberinto, int i, int j);
 }
