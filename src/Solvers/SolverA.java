@@ -1,4 +1,4 @@
-package Tarea1;
+package Solvers;
 
 import Laberinto.ReglaMovimiento;
 import Laberinto.SolverBase;
